@@ -3,6 +3,7 @@ import '../components/general.css'
 import React, { useState } from 'react';
 
 function SignIn() {
+    const [errmsg, setErrmsg] = useState("");
     const [formData, setFormData]  = useState({
         name: "",
         email: "",
@@ -60,6 +61,7 @@ function SignIn() {
                 <button className="submitbutton">Submit</button>
                 </form>
             </div>
+            {errmsg && <div className="error">{errmsg}</div>}
         </div>
     )
 }

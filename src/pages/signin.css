@@ -26,3 +26,12 @@
     border: 0px;
     padding: 10px;
 }
+
+.error {
+    border: 1px red solid;
+    background-color: #ffaaaa;
+    width: 380px;
+    padding: 10px;
+    text-align: center;
+    margin: 5px auto 10px auto;
+}
