@@ -3,7 +3,7 @@ import '../components/general.css'
 import React, { useState } from 'react';
 
 function SignIn() {
-    const [errmsg, setErrmsg] = useState("");
+    const [errmsg, setErrmsg] = useState("ERROR");
     const [formData, setFormData]  = useState({
         name: "",
         email: "",
