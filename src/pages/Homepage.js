@@ -5,6 +5,7 @@ function Homepage() {
   return (
     <div>
       <div className="centerPage">
+        <h1 className="homepageTitle">My Rankers</h1>
         <AddProject/>
       </div>
     </div>
