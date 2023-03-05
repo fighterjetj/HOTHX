@@ -1,5 +1,3 @@
-import authSignup from "../backend/auth/authSignup";
-import authLogin from "../backend/auth/authLogin";
 import makeRanking from "../backend/makeRanking";
 
 const testRank = [
@@ -27,7 +25,6 @@ const testRank = [
 
 function test() {
     console.log("Testing!");
-    authLogin("jacksonrobertsteele@gmail.com", "password");
     makeRanking(testRank, "1aeedd");
 }
 

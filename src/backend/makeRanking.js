@@ -1,5 +1,5 @@
-import { auth, db } from "./firebase";
-import { ref, push, set, runTransaction } from "firebase/database";
+import { db } from "./firebase";
+import { ref, push, set, serverTimestamp } from "firebase/database";
 
 
 const testRank = [
@@ -29,8 +29,26 @@ async function makeRanking(rankList, uid) {
     // Making database references
     const rankingRef = ref(db, "ranking");
     const newRankingRef = push(rankingRef);
-    // Make a ranking object to store under the user
-    const rankingObj = Object.assign({}, rankList);
+    /*
+    Make a ranking object to store under the user
+    Should be formatted like:
+    {
+        name:
+        description:
+        image:
+        elo:
+        num_ranked:
+    }
+    */
+    const newRankList = rankList.map((rank) => {
+        return {
+            ...rank,
+            elo: 32,
+            num_ranked: 0
+        }
+    })
+    let rankingObj = Object.assign({}, newRankList);
+    rankingObj.timestamp = serverTimestamp();
     console.log(rankingObj);
     const userRankingRef = ref(db, "users/" + uid + "/rankings/" + newRankingRef.key);
     // Saving the ranking object to the ranking part of the database
