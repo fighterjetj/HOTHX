@@ -30,6 +30,19 @@ async function uploadFile() {
     metadata: metadata,
   });
 
+  const url = await file.getSignedUrl({
+    action: 'read',
+    expires: '03-17-2023'
+  });
+
+  const imageUrl = url[0];
+
+// Store the URL in the Realtime Database
+const dbRef = admin.database().ref('path/to/image');
+dbRef.set({
+  url: imageUrl
+});
+
 console.log(`${filename} uploaded.`);
 
 }
