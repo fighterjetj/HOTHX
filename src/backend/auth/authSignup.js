@@ -1,7 +1,7 @@
-import { auth, db } from "../firebase"
+import { auth, db } from "../firebase";
 import { ref, set } from "firebase/database";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import errorCodes from "../errorCodes.json"
+import errorCodes from "../errorCodes.json";
 
 /* 
 Function that, when passed an email, password, and a confirmation of password attempts to sign user up
@@ -17,7 +17,7 @@ async function authSignup(name, email, password, confirm) {
     throw new Error("Must Provide a Name");
   }
   else if (email.length === 0){
-    throw new Error("Must provide an email");
+    throw new Error("Must Provide an Email");
   }
   else if (password !== confirm){
     //console.log("Password no match");
@@ -47,7 +47,7 @@ async function authSignup(name, email, password, confirm) {
     const newUserData = {
       name: name,
       email: user.email,
-      num_transactions_ranked: 0,
+      num_rankings: 0,
       own_transactions: [],
     };
     await set(ref(db, "users/" + user.uid), newUserData);
