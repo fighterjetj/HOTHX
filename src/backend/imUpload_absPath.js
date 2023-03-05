@@ -1,7 +1,5 @@
 let admin = require("firebase-admin");
 const uuid = require('uuid-v4');
-const readline = require('readline');
-const fs = require('fs');
 
 // CHANGE: The path to your service account
 
@@ -12,19 +10,9 @@ admin.initializeApp({
 
 let bucket = admin.storage().bucket();
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-  
-rl.question('Enter the path to the JPEG file to upload: ', async function (filename) {
+let filename = "C:/Users/Ki/Downloads/Banana-Toast-Recipe-Image-1.jpg"
 
-  // Check if the file exists
-  if (!fs.existsSync(filename)) {
-    console.log(`File not found: ${filename}`);
-    rl.close();
-    return;
-  }
+async function uploadFile() {
 
   const metadata = {
     metadata: {
@@ -35,16 +23,15 @@ rl.question('Enter the path to the JPEG file to upload: ', async function (filen
     cacheControl: 'public, max-age=31536000',
   };
 
-  // Upload the file to the bucket
+  // Uploads a local file to the bucket
   await bucket.upload(filename, {
     // Support for HTTP requests made with `Accept-Encoding: gzip`
     gzip: true,
     metadata: metadata,
   });
 
-  console.log(`${filename} uploaded.`);
+console.log(`${filename} uploaded.`);
 
-  rl.close();
+}
 
-});
-
+uploadFile().catch(console.error);
