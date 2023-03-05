@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+const readline = require('readline');
+
+let object1 = {
+    name: "object1",
+    rating: 1300
+}
+
+let object2 = {
+    name: "object2",
+    rating: 1200
+}
+
+function calc_exp(prating, orating) {
+    const exponent = (orating - prating) / 400;
+    const denominator = 1 + Math.pow(10, exponent);
+    const result = 1 / denominator;
+    return result;
+}
+
+const obj1_rate = object1.rating
+const obj2_rate = object2.rating
+
+//calculat expected score for each player
+
+const obj1_exp = calc_exp(obj1_rate, obj2_rate)
+const obj2_exp = calc_exp(obj2_rate, obj1_rate)
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question(`Which of the objects is better? ${object1.name} or ${object2.name}`, (choice) => {
+    if (choice == "1"){
+            object1.rating = object1.rating + 32 * (1 - obj1_exp);
+            object2.rating = object2.rating + 32 * (0 - obj1_exp);
+    }
+    else if (choice == "2"){
+            object1.rating = object1.rating + 32 * (0 - obj1_exp);
+            object2.rating = object2.rating + 32 * (1 - obj1_exp); 
+    }
+    console.log("Object1 Rating is " + object1.rating)
+    console.log("Object2 Rating is " + object2.rating)
+    rl.close();
+});
+
+
+
+
+
+
