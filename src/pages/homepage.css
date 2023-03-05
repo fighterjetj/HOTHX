@@ -4,11 +4,3 @@
     align-items: center;
     margin: auto;
 }
-
-.homepageTitle {
-    text-align: center;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-    border-bottom: 1px #e0e0e0 solid;
-    font-weight: 400;
-}

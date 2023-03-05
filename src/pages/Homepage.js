@@ -1,5 +1,6 @@
 import './homepage.css'
-import AddProject from '../components/AddProject'
+import '../components/general.css'
+import SparseButton from '../components/SparseButton'
 import { Link } from 'react-router-dom';
 
 
@@ -9,7 +10,7 @@ function Homepage() {
       <div className="centerPage">
         <h1 className="homepageTitle">My Rankers</h1>
         <Link to={"/UploadPage"} style={{textDecoration: 'none'}}>
-          <AddProject/>
+          <SparseButton width="200px" height="200px" type="add"/>
         </Link>
       </div>
     </div>

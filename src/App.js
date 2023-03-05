@@ -1,5 +1,6 @@
 import logo from './logo.svg';
-import Homepage from './pages/Homepage';
+import HomePage from './pages/Homepage';
+import SigninPage from './pages/SigninPage';
 import UploadPage from './pages/UploadPage';
 
 import './App.css';
@@ -11,7 +12,8 @@ function App() {
     <Router>
         <div>
             <Routes>
-                <Route exact path="/" element={<Homepage />}/>
+                <Route exact path="/" element={<HomePage />}/>
+                <Route exact path="/SigninPage" element={<SigninPage />}/>
                 <Route path="/UploadPage" element={<UploadPage />}/>
             </Routes>
         </div>
