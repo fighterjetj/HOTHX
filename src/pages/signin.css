@@ -24,7 +24,16 @@
 .submitbutton {
     background-color: white;
     border: 0px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
+    width: 100px;
+    transition: 300ms;
+    border-radius: 30px;
+}
+
+.submitbutton:hover {
+    background-color: #e5e5e5;
+    transition: 300ms;
 }
 
 .error {
