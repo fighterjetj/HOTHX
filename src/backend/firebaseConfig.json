@@ -12,6 +12,8 @@
   
     "appId": "1:341808780908:web:d7e646f54e2e3a48a22a49",
   
-    "measurementId": "G-QCKXBM0NQQ"
+    "measurementId": "G-QCKXBM0NQQ",
+
+    "databaseURL": "https://ranker-81139-default-rtdb.firebaseio.com/"
 }
   

@@ -1,5 +1,5 @@
 import { auth, db } from "../firebase"
-import { doc, setDoc } from "firebase/firestore";
+import { ref, set } from "firebase/database";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import errorCodes from "../errorCodes.json"
 
@@ -16,11 +16,14 @@ async function authSignup(name, email, password, confirm) {
   if (name.length === 0){
     throw new Error("Must Provide a Name");
   }
-  if (password !== confirm){
+  else if (email.length === 0){
+    throw new Error("Must provide an email");
+  }
+  else if (password !== confirm){
     //console.log("Password no match");
     throw new Error("Passwords Do Not Match");
   }
-  if (password.length < 6){
+  else if (password.length < 6){
     throw new Error("Password must be at least six characters long");
   }
   let toReturn = await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
@@ -41,13 +44,13 @@ async function authSignup(name, email, password, confirm) {
   });
   // Setting up the user document in the users collection
   if (user !== null){
-    const docData = {
+    const newUserData = {
       name: name,
       email: user.email,
       num_transactions_ranked: 0,
       own_transactions: [],
     };
-    await setDoc(doc(db, "users", user.uid), docData);
+    await set(ref(db, "users/" + user.uid), newUserData);
   }
   return toReturn;
   };

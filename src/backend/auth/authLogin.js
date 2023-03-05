@@ -6,7 +6,7 @@ async function authLogin(email, password){
   let toReturn = await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
     const user = userCredential.user;
     console.log(`Logged in user ${email}, ${user.uid}`);
-    return;
+    return user;
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
