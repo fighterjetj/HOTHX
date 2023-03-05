@@ -1,0 +1,18 @@
+{
+    "emailAlreadyUsed": {
+        "code": "auth/email-already-in-use",
+        "error": "Email already in use"
+    },
+    "weakPassword": {
+        "code": "auth/weak-password",
+        "error": "Password must have at least six characters"
+    },
+    "wrongPassword": {
+        "code": "auth/wrong-password",
+        "error": "Incorrect password"
+    },
+    "tooManyLogins": {
+        "code": "auth/too-many-requests",
+        "error": "Too many recent login requests.  Try again later"
+    }
+}
