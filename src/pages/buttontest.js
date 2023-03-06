@@ -1,5 +1,5 @@
 import makeRanking from "../backend/makeRanking";
-import retrieveRankings from "../backend/retreiveRanking";
+import retrieveRankings from "../backend/retreiveRankings";
 
 const testRank = [
     {
