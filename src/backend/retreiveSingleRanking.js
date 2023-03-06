@@ -15,3 +15,5 @@ async function retreiveSingleRanking(rankingID){
         return null;
     });
 }
+
+export default retreiveSingleRanking;
