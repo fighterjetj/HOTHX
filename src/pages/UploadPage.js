@@ -2,6 +2,8 @@ import SparseButton from '../components/SparseButton'
 import '../components/general.css'
 import './uploadpage.css'
 import React, { useState } from 'react';
+import { storage } from "../backend/firebase.js";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 function UploadPage() {
     let [uploadedImgs, setUploadedImgs] = useState([]);
@@ -11,14 +13,17 @@ function UploadPage() {
         setUploadedImgs( (last) =>
             {return [...last, [e.target.files[0], ""]]}
         );
+        const storageRef = ref(storage, '/files/' + e.target.files[0].name);
+        uploadBytesResumable(storageRef, e.target.files[0]);   
     }
 
     function handleChange(event, idx) {
         console.log(idx)
+        console.log(event.key)
         setUploadedImgs((last)=> {
             let newlast = last;
             newlast[idx][1] = event.target.value;
-            console.log(uploadedImgs);
+            console.log(uploadedImgs); 
             return newlast;
         })
     }
@@ -34,7 +39,7 @@ function UploadPage() {
                     type="text"
                     placeholder="image description (optional)"
                     name="description"
-                    onChange={(e) => handleChange(e, idx)}
+                    onChange={(e) => handleChange(e, idx, )}
                 />
             </div>
         )
