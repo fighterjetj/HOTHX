@@ -1,3 +1,4 @@
+import getPair from "../backend/getPair";
 import makeRanking from "../backend/makeRanking";
 import retrieveRankings from "../backend/retreiveRankings";
 
@@ -25,9 +26,11 @@ function test() {
     console.log("Testing!");
     makeRanking(testRank, "1", "better", "tester");
 }
-function test2(){
+async function test2(){
     console.log("Testing 2!")
-    retrieveRankings("1", 1);
+    let rankings = await retrieveRankings("1", 1);
+    console.log(rankings);
+    console.log(getPair(rankings[0]));
 }
 
 function buttonTest() {

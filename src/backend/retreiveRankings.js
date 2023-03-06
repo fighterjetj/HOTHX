@@ -12,13 +12,11 @@ async function retrieveRankings(uid, numRankings) {
         // Getting the raw data)
         data = snapshot.val();
         if (data) {
-            console.log(data);
             // Iterating over all the data
             for (const val in data){
                 rankObject = data[val];
                 rankings.push(rankingParser(rankObject));
             }
-            console.log(rankings);
         }
         return rankings;
     });

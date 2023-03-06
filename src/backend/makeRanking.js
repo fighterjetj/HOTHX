@@ -22,6 +22,9 @@ const testRank = [
 ]
 
 async function makeRanking(rankList, uid, which, rankingName) {
+    if (rankList.length < 2){
+        throw new Error("Cannot make a ranking with less than 2 objects");
+    }
     // Making database references
     const rankingRef = ref(db, "rankings");
     const newRankingRef = push(rankingRef);
