@@ -8,7 +8,7 @@ async function retrieveRankings(uid) {
     const rankingRef = ref(db, "users/" + uid + "/rankings");
     let data;
     let rankObject;
-    let rankings = [];
+    let rankings = {};
     return await get(rankingRef).then((snapshot) => {
         // Getting the raw data)
         data = snapshot.val();
@@ -16,7 +16,7 @@ async function retrieveRankings(uid) {
             // Iterating over all the data
             for (const val in data){
                 rankObject = data[val];
-                rankings.push(rankingParser(rankObject));
+                rankings[val] = rankingParser(rankObject);
             }
         }
         return rankings;

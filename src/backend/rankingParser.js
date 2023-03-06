@@ -21,6 +21,7 @@ This function parses out the object and it becomes transformed into an object fo
     which:
 }
 */
+/*
 const testVals = {
     0: {
         elo: 0,
@@ -45,7 +46,7 @@ const testVals = {
     timestamp: 1678062415270,
     which: "better"
 }
-
+*/
 function rankingParser(rankObject){
     let tempList = [];
     let key = 0;

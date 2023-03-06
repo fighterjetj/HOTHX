@@ -1,6 +1,8 @@
 import getPair from "../backend/getPair";
 import makeRanking from "../backend/makeRanking";
+import rankPair from "../backend/rankPair";
 import retrieveRankings from "../backend/retreiveRankings";
+import updateElo from "../backend/updateElo";
 
 const testRank = [
     {
@@ -28,9 +30,12 @@ function test() {
 }
 async function test2(){
     console.log("Testing 2!")
-    let rankings = await retrieveRankings("1", 1);
-    console.log(rankings);
-    console.log(getPair(rankings[0]));
+    let rankings = await retrieveRankings("1");
+    //console.log(rankings);
+    let pair = getPair(rankings[Object.keys(rankings)[0]]);
+    //console.log(pair);
+    //console.log(updateElo(pair[0], pair[1]));
+    rankPair(Object.keys(rankings)[0], pair[0], pair[1]);
 }
 
 function buttonTest() {

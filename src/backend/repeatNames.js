@@ -8,11 +8,12 @@ This is used because we later use the unique names to identify the various objec
 function repeatNames(rankList) {
     // Checks if name exists in set
     const seen = new Set();
-    for (let object in rankList){
-        if (seen.has(object["name"])){
+    for (let key in rankList){
+        if (seen.has(rankList[key]["name"])){
+            console.log(rankList[key]["name"]);
             return true;
         }
-        seen.add(object["name"]);
+        seen.add(rankList[key]["name"]);
     }
     return false;
 }

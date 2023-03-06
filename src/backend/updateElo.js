@@ -3,8 +3,8 @@ Takes as input a formatted rank subobject for the winner and the loser
 So, should have elo field
 Returns an object formatted like:
 {
-    winChange: (amt)
-    loseChange: (amt)
+    winChangeName: (amt)
+    loseChangeName: (amt)
 }
 */
 function updateElo(winningObject, losingObject) {    
@@ -19,8 +19,8 @@ function updateElo(winningObject, losingObject) {
     
     const winExp = calc_exp(winRate, loseRate);
     let toReturn = {}
-    toReturn.winChange = 32*(1-winExp);
-    toReturn.loseChange = 32*(-winExp);
+    toReturn[winningObject.name] = 32*(1-winExp);
+    toReturn[losingObject.name] = 32*(-winExp);
     return toReturn;
 }
 
