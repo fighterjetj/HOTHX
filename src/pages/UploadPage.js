@@ -9,10 +9,7 @@ function UploadPage() {
     function onFileUpload(e) {
         setUploadedImgs( (last) =>
             {return [...last, [e.target.files[0], ""]]}
-            // {return [...last, e.target.files[0]]}
         );
-        console.log(uploadedImgs)
-        
     }
 
     function handleChange(event, idx) {

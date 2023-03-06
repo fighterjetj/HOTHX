@@ -4,6 +4,7 @@ import SigninPage from './pages/SigninPage';
 import UploadPage from './pages/UploadPage';
 import ComparePage from './pages/ComparePage';
 import ShowRankingPage from './pages/ShowRankingPage';
+import SignupPage from './pages/SignupPage';
 
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/UploadPage" element={<UploadPage />}/>
                 <Route path="/ComparePage" element={<ComparePage />}/>
                 <Route path="/ShowRankingPage" element={<ShowRankingPage />}/>
+                <Route path="/SignupPage" element={<SignupPage />}/>
             </Routes>
         </div>
     </Router>
