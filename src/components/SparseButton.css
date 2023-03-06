@@ -2,9 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px #b0b0b0 dashed;
     margin: 10px;
     transition: 300ms;
+}
+
+.solid {
+    border: 1px #b0b0b0 solid;
+}
+
+.dashed {
+    border: 1px #b0b0b0 dashed;
 }
 
 .projectBox:hover {
@@ -28,3 +35,8 @@
     color: grey;
 }
 
+.addProject {
+    font-weight: 200;
+    
+}
+.addProject:link { text-decoration: none; }

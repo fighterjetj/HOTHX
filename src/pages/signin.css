@@ -18,8 +18,16 @@
     /* height: 30px; */
     margin: 10px;
     border: 0px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #a0a0a0;
+    transition: 300ms;
+    outline: 0;
 }
+
+.input:focus {
+    border-bottom: 1px solid black;
+    transition: 300ms;
+}
+
 
 .submitbutton {
     background-color: white;
