@@ -1,10 +1,12 @@
 import './signin.css'
 import '../components/general.css'
-import authSignup from '../backend/auth/authSignup';
+import authLogin from '../backend/auth/authLogin';
+import { useNavigate } from 'react-router-dom';
 
 import React, { useState } from 'react';
 
 function SignupPage() {
+    const navigate = useNavigate();
     const [errmsg, setErrmsg] = useState("");
     const [formData, setFormData]  = useState({
         name: "",
@@ -23,8 +25,14 @@ function SignupPage() {
         })
     }
     
-    function handleSubmit(event) {
-
+    async function handleSubmit(event) {
+        event.preventDefault();
+        let {email, password} = formData;
+        console.log(formData);
+        await authLogin(email, password).then(() => {
+            navigate('/');}).catch((e) => {
+            setErrmsg(String(e));
+        });
     }
 
     return (

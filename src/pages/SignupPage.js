@@ -2,10 +2,13 @@ import './signin.css'
 import '../components/general.css'
 import React, { useState } from 'react';
 import authSignup from '../backend/auth/authSignup';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 function SignIn() {
+    const navigate = useNavigate();
     const [errmsg, setErrmsg] = useState("");
     const [formData, setFormData]  = useState({
         name: "",
@@ -28,7 +31,8 @@ function SignIn() {
         event.preventDefault();
         let {name, email, password, confirm} = formData;
         console.log(formData);
-        await authSignup(name, email, password, confirm).then(setErrmsg("")).catch((e) => {
+        await authSignup(name, email, password, confirm).then(() => {
+            navigate('/');}).catch((e) => {
             setErrmsg(String(e));
         });
     }
