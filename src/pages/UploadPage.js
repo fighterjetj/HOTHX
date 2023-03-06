@@ -7,6 +7,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 function UploadPage() {
     let [uploadedImgs, setUploadedImgs] = useState([]);
+    let [which, setWhich] = useState("");
 
     function onFileUpload(e) {
         setUploadedImgs( (last) =>
@@ -44,6 +45,10 @@ function UploadPage() {
         )
     })
 
+    function updateWhich(e) {
+        setWhich(e.target.value);
+    }
+
     return (
     <div>
             <h1 className='homepageTitle'>Upload Images</h1>
@@ -52,6 +57,16 @@ function UploadPage() {
                 <input 
                     type="file" name="file" onChange={onFileUpload}
                 />
+            </div>
+            <div>
+                <div>
+                    what you're comparing by: ex: which is better, cooler,
+                    shorter
+                </div>
+                <input type="text" 
+                placeholder="better/cooler/shorter"
+                onChange={updateWhich}
+                ></input>
             </div>
         </div>
     )

@@ -21,6 +21,7 @@ function App() {
                 <Route path="/ComparePage" element={<ComparePage />}/>
                 <Route path="/ShowRankingPage" element={<ShowRankingPage />}/>
                 <Route path="/SignupPage" element={<SignupPage />}/>
+
             </Routes>
         </div>
     </Router>

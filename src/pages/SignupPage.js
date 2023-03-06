@@ -1,9 +1,15 @@
 import './signin.css'
 import '../components/general.css'
 import React, { useState } from 'react';
+import authSignup from '../backend/auth/authSignup';
+import { useNavigate } from 'react-router-dom';
 
-function SignupPage() {
-    const [errmsg, setErrmsg] = useState("ERROR");
+
+
+
+function SignIn() {
+    const navigate = useNavigate();
+    const [errmsg, setErrmsg] = useState("");
     const [formData, setFormData]  = useState({
         name: "",
         email: "",
@@ -21,15 +27,28 @@ function SignupPage() {
         })
     }
     
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
+        event.preventDefault();
+        let {name, email, password, confirm} = formData;
         console.log(formData);
+        await authSignup(name, email, password, confirm).then(() => {
+            navigate('/');}).catch((e) => {
+            setErrmsg(String(e));
+        });
     }
 
     return (
         <div>
-            <h1 className="homepageTitle">sign in</h1>
+            <h1 className="homepageTitle">sign up</h1>
             <div className="formholder">
                 <form className="form" onSubmit={handleSubmit}>
+                    <input
+                        className='input'
+                        type="text"
+                        placeholder="Name"
+                        name="name"
+                        onChange={handleChange}
+                    />
                     <input
                         className='input'
                         type="text"
@@ -44,6 +63,13 @@ function SignupPage() {
                         name="password"
                         onChange={handleChange}
                     />
+                    <input
+                        className='input'
+                        type="password"
+                        placeholder="confirm password"
+                        name="confirm"
+                        onChange={handleChange}
+                    />
                 <button className="submitbutton">Submit</button>
                 </form>
             </div>
@@ -52,4 +78,4 @@ function SignupPage() {
     )
 }
 
-export default SignupPage;
+export default SignIn;
