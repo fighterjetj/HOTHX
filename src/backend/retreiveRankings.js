@@ -2,7 +2,8 @@ import { db } from "./firebase";
 import { ref, get } from "firebase/database";
 import rankingParser from "./rankingParser";
 
-async function retrieveRankings(uid, numRankings) {
+// Takes as input the uid of a user and returns all of their rankings
+async function retrieveRankings(uid) {
     // Making a reference to the rankings
     const rankingRef = ref(db, "users/" + uid + "/rankings");
     let data;
