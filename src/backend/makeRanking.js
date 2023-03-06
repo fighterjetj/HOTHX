@@ -5,36 +5,31 @@ import { ref, push, set, serverTimestamp } from "firebase/database";
 const testRank = [
     {
         name: "Test 1",
-        description: "Test 1 Description",
         image: ""
     },
     {
         name: "Test 2",
-        description: "Test 2 Description",
         image: ""
     },
     {
         name: "Test 3",
-        description: "Test 3 Description",
         image: ""
     },
     {
         name: "Test 4",
-        description: "Test 4 Description",
         image: ""
     },
 ]
 
-async function makeRanking(rankList, uid) {
+async function makeRanking(rankList, uid, which, rankingName) {
     // Making database references
-    const rankingRef = ref(db, "ranking");
+    const rankingRef = ref(db, "rankings");
     const newRankingRef = push(rankingRef);
     /*
     Make a ranking object to store under the user
     Should be formatted like:
     {
         name:
-        description:
         image:
         elo:
         num_ranked:
@@ -49,6 +44,9 @@ async function makeRanking(rankList, uid) {
     })
     let rankingObj = Object.assign({}, newRankList);
     rankingObj.timestamp = serverTimestamp();
+    rankingObj.creator = uid;
+    rankingObj.name = rankingName;
+    rankingObj.which = which;
     console.log(rankingObj);
     const userRankingRef = ref(db, "users/" + uid + "/rankings/" + newRankingRef.key);
     // Saving the ranking object to the ranking part of the database

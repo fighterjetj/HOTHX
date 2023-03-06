@@ -1,38 +1,45 @@
 import makeRanking from "../backend/makeRanking";
+import retrieveRankings from "../backend/retreiveRanking";
 
 const testRank = [
     {
         name: "Test 1",
-        description: "Test 1 Description",
         image: ""
     },
     {
         name: "Test 2",
-        description: "Test 2 Description",
         image: ""
     },
     {
         name: "Test 3",
-        description: "Test 3 Description",
         image: ""
     },
     {
         name: "Test 4",
-        description: "Test 4 Description",
         image: ""
     },
 ]
 
+
 function test() {
     console.log("Testing!");
-    makeRanking(testRank, "1aeedd");
+    makeRanking(testRank, "1", "better", "tester");
+}
+function test2(){
+    console.log("Testing 2!")
+    retrieveRankings("1", 1);
 }
 
 function buttonTest() {
     return (
         // <div>
-        <div onClick={test}>
-            button
+        <div>
+            <div onClick={test}>
+                button1
+            </div>
+            <div onClick={test2}>
+                button2
+            </div>
         </div>
     )
 }
