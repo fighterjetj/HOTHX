@@ -7,6 +7,7 @@ import dummyinfo from "./dummyinfo";
 
 function ComparePage() {
     let [leftImg, rightImg] = getPair(dummyinfo);
+    
 
     function leftWins(){
         let outcome = updateElo(leftImg, rightImg);

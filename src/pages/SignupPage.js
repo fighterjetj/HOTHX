@@ -4,9 +4,6 @@ import React, { useState } from 'react';
 import authSignup from '../backend/auth/authSignup';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
 function SignIn() {
     const navigate = useNavigate();
     const [errmsg, setErrmsg] = useState("");

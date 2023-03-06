@@ -4,17 +4,23 @@ import './uploadpage.css'
 import React, { useState } from 'react';
 import { storage } from "../backend/firebase.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import makeRanking from '../backend/makeRanking';
+import getCurrentUID from '../backend/getCurrentUID';
 
 function UploadPage() {
     let [uploadedImgs, setUploadedImgs] = useState([]);
+    let [imgStructure, setImgStructure] = useState([]);
     let [which, setWhich] = useState("");
 
     function onFileUpload(e) {
         setUploadedImgs( (last) =>
             {return [...last, [e.target.files[0], ""]]}
         );
+        setImgStructure((last)=>
+            {return [...last, {name: "", image: e.target.files[0].name}]}
+        );
         const storageRef = ref(storage, '/files/' + e.target.files[0].name);
-        uploadBytesResumable(storageRef, e.target.files[0]);   
+        uploadBytesResumable(storageRef, e.target.files[0]);
     }
 
     function handleChange(event, idx) {
@@ -26,6 +32,21 @@ function UploadPage() {
             console.log(uploadedImgs); 
             return newlast;
         })
+        setImgStructure((last)=> {
+            let newlast = last;
+            newlast[idx].name = event.target.value;
+            console.log(uploadedImgs); 
+            console.log(imgStructure); 
+            return newlast;
+        })
+    }
+
+    async function submitFun() {
+        let uid = await getCurrentUID();
+        console.log(imgStructure);
+        if (uid){
+            makeRanking(imgStructure, uid, which, String(Math.random(10000000)));
+        }
     }
 
     let previews = uploadedImgs.map((uploadImg, idx) => {
@@ -67,7 +88,8 @@ function UploadPage() {
                 <input type="text" 
                 placeholder="better/cooler/shorter"
                 onChange={updateWhich}
-                ></input>
+                ></input><br/>
+                <button onClick={submitFun}>submit</button>
             </div>
         </div>
     )
