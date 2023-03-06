@@ -5,6 +5,7 @@ import UploadPage from './pages/UploadPage';
 import ComparePage from './pages/ComparePage';
 import ShowRankingPage from './pages/ShowRankingPage';
 import SignupPage from './pages/SignupPage';
+import ButtonTest from './pages/buttontest';
 
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -21,7 +22,7 @@ function App() {
                 <Route path="/ComparePage" element={<ComparePage />}/>
                 <Route path="/ShowRankingPage" element={<ShowRankingPage />}/>
                 <Route path="/SignupPage" element={<SignupPage />}/>
-
+                <Route path="/buttontest" element={<ButtonTest />}/>
             </Routes>
         </div>
     </Router>

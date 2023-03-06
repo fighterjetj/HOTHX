@@ -1,3 +1,4 @@
+import getImageBoobaly from "../backend/getImageBoobaly";
 import getPair from "../backend/getPair";
 import makeRanking from "../backend/makeRanking";
 import retrieveRankings from "../backend/retreiveRankings";
@@ -23,17 +24,21 @@ const testRank = [
 
 
 function test() {
-    console.log("Testing!");
-    makeRanking(testRank, "1", "better", "tester");
+    let url = getImageBoobaly("Banana-Toast-Recipe-Image-1.jpg");
+    console.log(url);
 }
 async function test2(){
+    /*
     console.log("Testing 2!")
     let rankings = await retrieveRankings("1", 1);
     console.log(rankings);
     console.log(getPair(rankings[0]));
+    */
+    let url = await getImageBoobaly("Banana-Toast-Recipe-Image-1.jpg");
+    console.log(url);
 }
 
-function buttonTest() {
+function ButtonTest() {
     return (
         // <div>
         <div>
@@ -47,4 +52,4 @@ function buttonTest() {
     )
 }
 
-export default buttonTest;
+export default ButtonTest;
