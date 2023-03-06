@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import HomePage from './pages/Homepage';
 import SigninPage from './pages/SigninPage';
 import UploadPage from './pages/UploadPage';
-import ComparePage from './pages/ComparePage'
+import ComparePage from './pages/ComparePage';
+import ShowRankingPage from './pages/ShowRankingPage';
 
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/SigninPage" element={<SigninPage />}/>
                 <Route path="/UploadPage" element={<UploadPage />}/>
                 <Route path="/ComparePage" element={<ComparePage />}/>
+                <Route path="/ShowRankingPage" element={<ShowRankingPage />}/>
             </Routes>
         </div>
     </Router>

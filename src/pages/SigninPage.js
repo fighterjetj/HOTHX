@@ -12,7 +12,7 @@ function SignIn() {
     });
 
     function handleChange(event) {
-        const {name, value, type, checked} = event.target;
+        const {name, value, type} = event.target;
         setFormData(prevFormData => {
             return {
                 ...prevFormData,

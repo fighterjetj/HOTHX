@@ -31,6 +31,3 @@ function ComparePage() {
 }
 
 export default ComparePage;
-
-// https://i.pinimg.com/236x/4e/d9/86/4ed986ae808fe276f95055e1452eb5e7--watermelon-head-watermelon-carving.jpg
-// https://i.pinimg.com/474x/16/66/3b/16663b7b4e3a846c925b93e0c9d83e34.jpg

@@ -1,0 +1,38 @@
+.centerHolder {
+    display: flex;
+    justify-content: center;
+}
+
+.rankingChip {
+    display: flex;
+    width: 400px;
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    border-radius: 100px 30px 30px 100px;
+}
+
+.idx{
+    font-size: 2rem;
+    font-weight: 600;
+    padding-left: 20px;
+}
+
+.name {
+    padding-left: 20px;
+}
+
+.objimg {
+    height: 100px;
+    margin-left: auto;
+    border-radius: 10px;
+}
+
+.rankedtitle {
+    text-align: center;
+    padding-bottom: 0px;
+    margin-bottom: 30px;
+    border-bottom: 1px #e0e0e0 solid;
+    font-weight: 400;
+}

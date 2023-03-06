@@ -8,16 +8,36 @@ function UploadPage() {
 
     function onFileUpload(e) {
         setUploadedImgs( (last) =>
-            {return [...last, e.target.files[0]]}
+            {return [...last, [e.target.files[0], ""]]}
+            // {return [...last, e.target.files[0]]}
         );
         console.log(uploadedImgs)
         
     }
 
-    let previews = uploadedImgs.map((uploadImg) => {
+    function handleChange(event, idx) {
+        console.log(idx)
+        setUploadedImgs((last)=> {
+            let newlast = last;
+            newlast[idx][1] = event.target.value;
+            console.log(uploadedImgs);
+            return newlast;
+        })
+    }
+
+    let previews = uploadedImgs.map((uploadImg, idx) => {
         return(
             <div>
-                {uploadImg.name}
+                <div style={{padding: "20px 0px 0px 10px"}}>
+                    {uploadImg[0].name}
+                </div>
+                <input                        
+                    className='input'
+                    type="text"
+                    placeholder="image description (optional)"
+                    name="description"
+                    onChange={(e) => handleChange(e, idx)}
+                />
             </div>
         )
     })
@@ -30,7 +50,6 @@ function UploadPage() {
                 <input 
                     type="file" name="file" onChange={onFileUpload}
                 />
-                {/* <button style={{backgroundColor: "white", borderWidth: "0px"}}> */}
             </div>
         </div>
     )
