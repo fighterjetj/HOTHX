@@ -54,6 +54,7 @@ function UploadPage() {
                 />
             </div>
             <div>
+                <br/>
                 <div>
                     what you're comparing by: ex: which is better, cooler,
                     shorter
